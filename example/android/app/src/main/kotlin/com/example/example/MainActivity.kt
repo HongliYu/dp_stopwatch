@@ -1,4 +1,4 @@
-package com.example.dp_stopwatch_demo
+package com.example.example
 
 import io.flutter.embedding.android.FlutterActivity
 

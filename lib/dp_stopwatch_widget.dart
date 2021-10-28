@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'dp_stopwatch_viewmodel.dart';
 import 'dart:async';
 
+/// DPStopWatchWidget
 class DPStopWatchWidget extends StatefulWidget {
   final DPStopwatchViewModel viewModel;
-
   const DPStopWatchWidget(this.viewModel, {Key? key}) : super(key: key);
 
   @override
@@ -13,6 +13,7 @@ class DPStopWatchWidget extends StatefulWidget {
 }
 
 class _ChallengesStopWatchWidgetState extends State<DPStopWatchWidget> {
+  /// Properties
   StreamSubscription<int>? _timerSubscription;
   Stream<int>? _timerStream;
   final defaultClockTextStyle = const TextStyle(
@@ -20,6 +21,7 @@ class _ChallengesStopWatchWidgetState extends State<DPStopWatchWidget> {
     fontSize: 14,
   );
 
+  /// Life Cycle
   @override
   void initState() {
     widget.viewModel.start = start;
@@ -42,6 +44,20 @@ class _ChallengesStopWatchWidgetState extends State<DPStopWatchWidget> {
     super.dispose();
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          widget.viewModel.clockText,
+          style: widget.viewModel.clockTextStyle ?? defaultClockTextStyle,
+        ),
+      ],
+    );
+  }
+
+  /// Actions
   start() {
     if (_timerStream != null) {
       return;
@@ -71,18 +87,5 @@ class _ChallengesStopWatchWidgetState extends State<DPStopWatchWidget> {
       widget.viewModel.currentTenMilliseconds =
           widget.viewModel.startWithTenMilliseconds ?? 0;
     });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          widget.viewModel.clockText,
-          style: widget.viewModel.clockTextStyle ?? defaultClockTextStyle,
-        ),
-      ],
-    );
   }
 }

@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
+/// DPStopwatchViewModel
 class DPStopwatchViewModel {
+  /// Stored properties
   Timer? timer;
   int? startWithTenMilliseconds;
   TextStyle? clockTextStyle;
   int currentTenMilliseconds = 0;
 
+  /// Actions
   Function? start;
   Function? pause;
   Function? resume;
   Function? stop;
 
+  /// Computed properties
   String get clockText => "$minutesStr:$secondsStr.$tenMillisecondsStr";
   String get minutesStr => ((currentTenMilliseconds / (60 * 100)) % 60)
       .floor()
@@ -28,11 +32,13 @@ class DPStopwatchViewModel {
     this.clockTextStyle,
   }) : currentTenMilliseconds = startWithTenMilliseconds ?? 0;
 
+  /// stop watch stream
   Stream<int> stopWatchStream() {
     StreamController<int>? streamController;
     Duration timerInterval = const Duration(milliseconds: 10);
     int counter = startWithTenMilliseconds ?? 0;
 
+    /// Private
     _tick(_) {
       counter++;
       streamController?.add(counter);

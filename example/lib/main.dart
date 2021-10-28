@@ -12,11 +12,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'dp_stopwatch demo',
+      title: 'example',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'dp_stopwatch demo'),
+      home: const MyHomePage(title: 'example'),
     );
   }
 }

@@ -1,6 +1,6 @@
 name: dp_stopwatch
-description: A standard stopwatch component
-version: 0.0.1
+description: The default widget Stopwatch() class has no method to get the values as a stream. It only outputs a single value whenever one of its methods is called. This repo brings a better version of stopwatch
+version: 0.0.2
 homepage: https://github.com/HongliYu/dp_stopwatch
 
 environment:
